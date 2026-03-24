@@ -1,0 +1,16 @@
+# Lifestack user data (lives in ~/.lifestack/, not here)
+.lifestack/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Node (if future tooling is added)
+node_modules/

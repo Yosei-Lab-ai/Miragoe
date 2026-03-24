@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Lifestack installer
+# Creates symlinks for Claude Code skills and initializes user data directory.
+
+LIFESTACK_DIR="$(cd "$(dirname "$0")" && pwd)"
+SKILLS_DIR="$HOME/.claude/skills/lifestack"
+DATA_DIR="$HOME/.lifestack"
+
+echo "=== Lifestack Setup ==="
+echo ""
+
+# 1. Install skills to ~/.claude/skills/lifestack/
+if [ -L "$SKILLS_DIR" ] && [ "$(readlink "$SKILLS_DIR")" = "$LIFESTACK_DIR" ]; then
+    echo "[skip] Skills already linked at $SKILLS_DIR"
+else
+    mkdir -p "$(dirname "$SKILLS_DIR")"
+    # Remove existing (broken symlink or directory) if present
+    if [ -e "$SKILLS_DIR" ] || [ -L "$SKILLS_DIR" ]; then
+        echo "[update] Removing existing $SKILLS_DIR"
+        rm -rf "$SKILLS_DIR"
+    fi
+    ln -s "$LIFESTACK_DIR" "$SKILLS_DIR"
+    echo "[done] Linked skills: $SKILLS_DIR -> $LIFESTACK_DIR"
+fi
+
+# 2. Initialize ~/.lifestack/ data directory
+if [ -d "$DATA_DIR" ]; then
+    echo "[skip] Data directory already exists at $DATA_DIR"
+else
+    mkdir -p "$DATA_DIR"/{goals,checkpoints,journal,retros,commitments,history}
+    echo "[done] Created data directory: $DATA_DIR"
+fi
+
+# 3. Ensure setup script is executable
+chmod +x "$LIFESTACK_DIR/setup"
+
+echo ""
+echo "=== Lifestack installed ==="
+echo ""
+echo "Your data lives in: $DATA_DIR"
+echo "Skills linked from: $SKILLS_DIR"
+echo ""
+echo "Get started:"
+echo "  1. Open Claude Code"
+echo "  2. Run /vision to declare your identity"
+echo "  3. Run /checkpoint to measure your alignment"
+echo ""
