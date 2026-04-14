@@ -96,7 +96,7 @@ Lifestack is the system that makes this actionable.
 **Persona:** Identity Architect
 **Status:** Active (Phase 1)
 **Duration:** 20-45 minutes
-**Output:** `~/.lifestack/goals/vision-{slug}.md`
+**Output:** `~/.lifestack/vision.md` (single file, evolves in place; prior versions snapshotted to `~/.lifestack/history/`)
 
 ### Why This Skill Exists
 
@@ -394,7 +394,7 @@ structure from day one.
 
 ### How It Will Work
 
-1. Read your Vision Statement from `~/.lifestack/goals/vision-*.md`
+1. Read your Vision Statement from `~/.lifestack/vision.md`
 2. Walk through each relevant life domain
 3. For each domain, define 1-3 goals with:
    - Success criteria (how do you know it's working?)
@@ -607,12 +607,15 @@ Plus one explicit question:
 
 ## /journal
 
-> Daily identity-anchored journaling.
+> Identity-anchored reflection on the user's existing daily journal.
+> Reference-type — Lifestack reads the user's source entry and adds an
+> identity layer, without duplicating prose.
 
 **Persona:** Journaling Companion
 **Status:** Phase 2 (planned)
 **Duration:** 5-10 minutes
-**Output:** `~/.lifestack/journal/{date}.md`
+**Output:** `~/.lifestack/journal/{date}.md` (a lightweight reflection linking to
+the user's external entry)
 
 ### Why This Skill Exists
 
@@ -620,18 +623,42 @@ Daily identity contact is the single most effective intervention for behavior
 change. Not because journaling is magic — because *remembering who you declared
 yourself to be* every day prevents drift.
 
-Most journaling fails because it's unstructured — you open a blank page and
-either vent or perform. `/journal` provides four focused prompts, all anchored
-to your identity declaration, completable in 5-10 minutes.
+Most people who would use Lifestack already journal somewhere (Obsidian,
+a plaintext dir, Day One, a paper notebook transcribed nightly). Forcing them
+to write a second journal inside Lifestack is friction — one of the two
+journals will die. So `/journal` is **reference-type by design**
+(ARCHITECTURE.md, Decision 2): it reads the user's existing entry and adds an
+identity lens on top, without duplicating their prose.
+
+If the user has no external journaling practice, `/journal` falls back to
+**standalone mode** and captures the reflection directly.
+
+### Configuration
+
+`/journal` reads `~/.lifestack/config.yml`:
+
+```yaml
+journal:
+  source_path: ~/obsidian/daily      # where the user writes
+  entry_pattern: "{date}.md"          # {date} → YYYY-MM-DD
+  on_missing: prompt                  # skip | prompt | create
+```
+
+Unset `source_path` → standalone mode.
 
 ### Structure
 
-Every journal entry has four sections:
+Every Lifestack journal reflection has four sections:
 
 1. **Identity Check-in:** "Am I living as the person I declared?"
-2. **Today's Evidence:** "What did I do today that proves my identity?"
+2. **Today's Evidence:** paraphrased or quoted from the user's source entry —
+   surfacing what they already wrote, through an identity lens
 3. **Friction:** "Where did identity and reality clash?"
-4. **Tomorrow's Intention:** "One specific identity-aligned action for tomorrow"
+4. **Tomorrow's Intention:** one specific identity-aligned action for tomorrow
+
+The output file includes a `source:` frontmatter field pointing to the external
+entry, so Obsidian and `/checkpoint` / `/retro` can follow the link for
+additional context.
 
 ### Imagined Usage
 
@@ -830,8 +857,9 @@ the right intervention.
 Every Lifestack skill shares these interaction principles:
 
 ### Identity Anchoring
-Every conversation starts by reading `~/.lifestack/goals/vision-*.md`. The user's
-declared identity is referenced throughout — it's the constant in every interaction.
+Every conversation starts by reading `~/.lifestack/vision.md` — the single,
+canonical vision. The user's declared identity is referenced throughout — it's
+the constant in every interaction.
 
 ### Evidence Over Feelings
 "How do you feel about your progress?" is never the question. "What did you

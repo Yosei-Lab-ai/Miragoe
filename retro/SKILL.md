@@ -27,8 +27,12 @@ Experience without reflection is just repetition. `/retro` prevents the common f
 
 When implemented, `/retro` will:
 1. Read all checkpoints since the last retro
-2. Analyze alignment score trends and action completion patterns
-3. Guide a structured reflection conversation
-4. Explicitly ask: "Should any goals change? Should your identity statement evolve?"
-5. Save the retrospective to `~/.lifestack/retros/{date}.md`
-6. Suggest running `/commit` to lock in next-cycle actions
+2. Read `~/.lifestack/journal/*.md` reflections in the same window (and
+   optionally follow `source:` links into the user's external journal for
+   additional pattern evidence — reference-type journaling, see
+   ARCHITECTURE.md)
+3. Analyze alignment score trends and action completion patterns
+4. Guide a structured reflection conversation
+5. Explicitly ask: "Should any goals change? Should your identity statement evolve?"
+6. Save the retrospective to `~/.lifestack/retros/{date}.md`
+7. Suggest running `/commit` to lock in next-cycle actions

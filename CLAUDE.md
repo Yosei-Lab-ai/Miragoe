@@ -13,7 +13,7 @@ over time.
 | `/checkpoint` | Phase 2 | Measure Identity Alignment Score by reviewing recent actions against identity. |
 | `/commit` | Phase 2 | Lock in specific commitments for the next cycle (day/week). |
 | `/retro` | Phase 2 | Guided retrospective: what worked, what didn't, identity lessons learned. |
-| `/journal` | Phase 2 | Identity-anchored journaling with structured prompts. |
+| `/journal` | Phase 2 | Identity-anchored reflection on the user's existing daily journal (reference-type — Lifestack does not duplicate prose). |
 | `/mentor` | Phase 2 | Compassionate confrontation from the user's future self. |
 | `/pivot` | Phase 2 | Re-evaluate goals while preserving core identity. |
 | `/unblock` | Phase 2 | Diagnose and resolve psychological resistance to action. |
@@ -45,22 +45,34 @@ Be honest but never shaming. The tone is:
 
 ## Data Storage
 
-All user data lives in `~/.lifestack/`:
+`ARCHITECTURE.md` is the single source of truth for the data model. Do not
+invent new paths or diverge from its layout. Summary:
 
 ```
 ~/.lifestack/
-├── vision.md              # Current vision statement
-├── goals/                 # Goal tree (Phase 2)
+├── config.yml             # User configuration (journal source path, cadence)
+├── vision.md              # THE vision (single, evolves in place — never multiple)
+├── goals/                 # Goal tree from /map (Phase 2) — not vision files
 │   └── {goal-slug}.md
 ├── checkpoints/           # Checkpoint reports (Phase 2)
-│   └── {date}.md
-├── journal/               # Journal entries (Phase 2)
-│   └── {date}.md
+├── journal/               # Lifestack identity reflections — reference external source
 ├── retros/                # Retrospective reports (Phase 2)
-│   └── {date}.md
-└── history/               # Archived vision statements
+├── commitments/           # /commit output (Phase 2)
+│   └── current.md
+└── history/               # Snapshots of prior vision versions
     └── vision-{date}.md
 ```
+
+### Two load-bearing rules
+
+1. **Single vision.** There is exactly one active `vision.md`. Re-running
+   `/vision` evolves it in place (snapshotting the prior version to `history/`).
+   Never create `vision-{slug}.md` or multiple parallel visions.
+2. **Reference-type journaling.** The user's daily journal lives wherever they
+   already write it. `~/.lifestack/config.yml` holds `journal.source_path` and
+   `journal.entry_pattern`. `/journal` reads the source entry, writes a
+   lightweight identity reflection to `~/.lifestack/journal/{date}.md`, and
+   links back to the source. Lifestack never duplicates the user's prose.
 
 ## Coexistence with gstack
 

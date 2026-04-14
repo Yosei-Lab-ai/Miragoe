@@ -27,8 +27,12 @@ Without measurement, identity work becomes wishful thinking. The brain defaults 
 When implemented, `/checkpoint` will:
 1. Read `~/.lifestack/vision.md` for identity context
 2. Read active goals from `~/.lifestack/goals/`
-3. Ask the user what they did since last checkpoint
-4. Score each dimension with specific evidence
-5. Calculate and present the Identity Alignment Score
-6. Save the report to `~/.lifestack/checkpoints/{date}.md`
-7. Show trend data if previous checkpoints exist
+3. Read `~/.lifestack/journal/*.md` reflections since the last checkpoint —
+   and, when those reflections' `source:` field points to a readable path,
+   optionally follow the link into the user's external journal for extra
+   evidence (reference-type journaling — see ARCHITECTURE.md, Decision 2)
+4. Ask the user what they did since last checkpoint
+5. Score each dimension with specific evidence
+6. Calculate and present the Identity Alignment Score
+7. Save the report to `~/.lifestack/checkpoints/{date}.md`
+8. Show trend data if previous checkpoints exist

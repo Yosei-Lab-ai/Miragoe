@@ -33,7 +33,33 @@ else
     echo "[done] Created data directory: $DATA_DIR"
 fi
 
-# 3. Ensure setup script is executable
+# 3. Scaffold a commented config.yml if missing so users discover the
+#    configuration surface (reference-type journaling, cycle length, etc.).
+#    See ARCHITECTURE.md for the full spec.
+CONFIG_FILE="$DATA_DIR/config.yml"
+if [ ! -f "$CONFIG_FILE" ]; then
+    cat > "$CONFIG_FILE" <<'YAML'
+# Lifestack configuration — all fields are optional.
+# See ARCHITECTURE.md for the full spec.
+version: 1
+
+# Reference-type journaling: point Lifestack at your existing daily journal.
+# Leave source_path empty to run /journal in standalone mode.
+journal:
+  # source_path: ~/obsidian/daily
+  # entry_pattern: "{date}.md"        # {date} -> YYYY-MM-DD
+  # on_missing: prompt                # skip | prompt | create
+
+cycle:
+  length_weeks: 1
+
+checkpoint:
+  cadence: weekly                     # daily | weekly
+YAML
+    echo "[done] Created $CONFIG_FILE (edit to enable reference-type journaling)"
+fi
+
+# 4. Ensure setup script is executable
 chmod +x "$LIFESTACK_DIR/setup"
 
 echo ""

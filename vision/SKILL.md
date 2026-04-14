@@ -26,7 +26,7 @@ By the end of this session, the user will have:
 1. A declared identity: **"I am [identity]"** — not "I want to be" or "I'm working toward"
 2. Five concrete Identity Actions that prove this identity daily
 3. A target date framed as: **"I have already achieved this by [date]. I am now tracing the route."**
-4. A Vision Statement saved to `~/.lifestack/goals/vision-{id}.md`
+4. A Vision Statement saved to `~/.lifestack/vision.md` (the single, canonical vision file — see ARCHITECTURE.md)
 
 The cognitive reframe is critical. The user leaves this session not with a goal to pursue,
 but with an identity to live. The difference is everything.
@@ -37,17 +37,38 @@ but with an identity to live. The difference is everything.
 
 ```bash
 # 1. Ensure data directories exist
-mkdir -p ~/.lifestack/goals ~/.lifestack/history
+mkdir -p ~/.lifestack/history
 
-# 2. Check for existing vision statements
-ls ~/.lifestack/goals/vision-*.md 2>/dev/null
+# 2. Check for the existing vision (single file — Lifestack does not support
+#    multiple parallel visions; see ARCHITECTURE.md, Decision 1).
+test -f ~/.lifestack/vision.md && cat ~/.lifestack/vision.md
 ```
 
-- If existing vision files are found, read them and ask:
-  "You have an existing vision. Would you like to **evolve** it, **add** a new vision alongside it, or **start fresh**?"
-- If starting fresh, archive existing files:
-  `mv ~/.lifestack/goals/vision-*.md ~/.lifestack/history/`
-- If no existing visions, proceed directly.
+**Lifestack supports exactly one active vision.** A person with multiple
+simultaneous identities has none. If the user wants to explore a new direction,
+the right move is to *evolve* the existing vision — identity matures, it does
+not fork.
+
+- If `~/.lifestack/vision.md` does not exist: proceed directly to Step 1.
+- If it exists, read it in full and ask:
+  > "You already have a vision declared. You are [current identity]. Do you
+  > want to **evolve** this vision (default — refine the language, update the
+  > actions, mature the identity), or **replace** it entirely (rare — only if
+  > you've had a genuine identity shift, not just a mood change)?"
+- **Evolve path** (default):
+  - Snapshot the current file to `~/.lifestack/history/vision-{YYYY-MM-DD}.md`
+    before writing the new version.
+  - Run an abbreviated process: skip Steps 1–3 unless the user's answers
+    reveal the core identity itself has shifted. Focus on Steps 6–8 with
+    the existing identity as the starting draft.
+  - Bump `version:` in frontmatter by 1. Update `updated:`. Keep `created:`
+    unchanged.
+- **Replace path** (only if the user is certain):
+  - Archive the current file to `~/.lifestack/history/vision-{YYYY-MM-DD}.md`.
+  - Run the full 8-step process from scratch.
+  - Reset `version:` to 1. Set a new `created:`.
+- **Never** create `vision-{slug}.md` or any second vision file. The single
+  `~/.lifestack/vision.md` is the only active vision.
 
 ---
 
@@ -364,14 +385,18 @@ to walk the path."
 
 **Only after all 8 steps are complete**, compile the Vision Statement.
 
-### File Naming
+### File Location
 
-Generate a short slug ID from the identity declaration (e.g., "free-developer",
-"disciplined-creator", "confident-athlete"). Save to:
+There is exactly one file. Save to:
 
 ```
-~/.lifestack/goals/vision-{slug}.md
+~/.lifestack/vision.md
 ```
+
+Do not slug-ify the identity. Do not create `vision-{name}.md`. The single
+active vision lives at the canonical path. Prior versions live under
+`~/.lifestack/history/` (snapshotted automatically by the BEFORE YOU BEGIN
+step above).
 
 ### File Format
 
@@ -455,14 +480,20 @@ on a single client, on an algorithm — would the money fix it?"
 ## EDGE CASES
 
 ### User has multiple identities they want to declare
-Run `/vision` once per identity. Each produces a separate `vision-{slug}.md` file.
-Recommend starting with the one that has the most pain (Step 1) — that's where
-energy is highest.
+Do not create multiple vision files — Lifestack supports a single active
+vision by design (ARCHITECTURE.md, Decision 1). Force prioritization:
+> "Lifestack holds one vision at a time on purpose. A person with three
+> identities has none. If you could only be one of these for the next 8–12
+> weeks — which one? The others aren't lost; they can surface later. But
+> right now, which one hurts most to not be?"
+Treat this as **FOCUS** mode and run the standard process for the chosen
+identity.
 
 ### User has done this before and is evolving
-Read existing vision files. Ask what's changed and why. Often the identity stays
-the same but the actions need updating. Don't force a full 8-step process if Steps 1-3
-are already solid — focus on Steps 6-8.
+Read `~/.lifestack/vision.md`. Ask what's changed and why. Often the identity
+stays the same but the actions need updating. Don't force a full 8-step process
+if Steps 1-3 are already solid — focus on Steps 6-8. The BEFORE YOU BEGIN
+section defines the evolve/replace flow; follow it.
 
 ### User is in crisis or mentions mental health concerns
 Acknowledge with genuine compassion. Do not attempt therapy. Say:
