@@ -1,8 +1,8 @@
-# Lifestack Architecture
+# Miragoe Architecture
 
 ## Pipeline Design
 
-Lifestack follows a cyclical pipeline modeled after both the OODA loop and
+Miragoe follows a cyclical pipeline modeled after both the OODA loop and
 agile sprint cycles, adapted for personal identity work:
 
 ```
@@ -30,7 +30,7 @@ Each goal includes success criteria, pivot criteria, and a target date.
 
 ### Phase 3: Act (daily life)
 The user lives their life, taking actions aligned with their identity.
-Lifestack does not interrupt daily life — it provides structure for reflection.
+Miragoe does not interrupt daily life — it provides structure for reflection.
 
 ### Phase 4: Check (`/checkpoint`)
 Measure Identity Alignment Score. The user reports what they did, and the system
@@ -55,7 +55,7 @@ who I am?
 
 ## Data Model
 
-### Vision Statement (`~/.lifestack/vision.md`)
+### Vision Statement (`~/.miragoe/vision.md`)
 
 ```markdown
 ---
@@ -105,7 +105,7 @@ I am [identity statement].
 [When to evaluate whether this identity has taken root]
 ```
 
-### Goal Tree (`~/.lifestack/goals/{slug}.md`) — Phase 2
+### Goal Tree (`~/.miragoe/goals/{slug}.md`) — Phase 2
 
 ```markdown
 ---
@@ -132,7 +132,7 @@ target: 2026-06-24
 - [ ] [Specific, schedulable action]
 ```
 
-### Checkpoint Report (`~/.lifestack/checkpoints/{date}.md`) — Phase 2
+### Checkpoint Report (`~/.miragoe/checkpoints/{date}.md`) — Phase 2
 
 ```markdown
 ---
@@ -158,7 +158,7 @@ actions_planned: 5
 - [Specific commitment for next cycle]
 ```
 
-### Journal Entry (`~/.lifestack/journal/{date}.md`) — Phase 2
+### Journal Entry (`~/.miragoe/journal/{date}.md`) — Phase 2
 
 ```markdown
 ---
@@ -182,10 +182,10 @@ identity_reflection: [one sentence]
 [One specific identity-aligned action for tomorrow]
 ```
 
-## Directory Structure (`~/.lifestack/`)
+## Directory Structure (`~/.miragoe/`)
 
 ```
-~/.lifestack/
+~/.miragoe/
 ├── vision.md                  # Current active vision statement
 ├── goals/                     # Goal tree (one file per goal)
 │   ├── morning-movement.md
@@ -205,20 +205,20 @@ identity_reflection: [one sentence]
 
 ## Obsidian Integration
 
-All Lifestack data is stored as plain Markdown with YAML frontmatter. This means
-the `~/.lifestack/` directory can be opened directly as an Obsidian vault:
+All Miragoe data is stored as plain Markdown with YAML frontmatter. This means
+the `~/.miragoe/` directory can be opened directly as an Obsidian vault:
 
 - Frontmatter fields are indexed by Obsidian's metadata system
 - Internal links (e.g., `[[vision]]`) work across documents
 - Dataview queries can aggregate checkpoint scores over time
 - Graph view shows relationships between identity, goals, and actions
 
-To set up: Open Obsidian → Open folder as vault → Select `~/.lifestack/`
+To set up: Open Obsidian → Open folder as vault → Select `~/.miragoe/`
 
 No plugins are required for basic functionality. Recommended plugins:
 - **Dataview** — Query checkpoint scores, journal trends
 - **Calendar** — Navigate journal and checkpoint entries by date
-- **Templater** — Use Lifestack templates directly in Obsidian
+- **Templater** — Use Miragoe templates directly in Obsidian
 
 ## Common Interaction Patterns (Detail)
 
@@ -226,7 +226,7 @@ No plugins are required for basic functionality. Recommended plugins:
 
 Every skill begins with:
 
-1. Check if `~/.lifestack/vision.md` exists
+1. Check if `~/.miragoe/vision.md` exists
 2. If yes: Read it, extract the Identity Declaration, greet the user with
    reference to their identity
 3. If no: Suggest running `/vision` first (except `/vision` itself)

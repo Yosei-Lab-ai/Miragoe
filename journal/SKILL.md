@@ -17,11 +17,11 @@ Daily identity contact is crucial for behavior change. Research shows that peopl
 
 ## Key Design Decisions
 
-- Always begins by reading `~/.lifestack/vision.md` for context
+- Always begins by reading `~/.miragoe/vision.md` for context
 - Four core sections: Identity Check-in, Today's Evidence, Friction, Tomorrow's Intention
 - Mood tracking (1-10) for longitudinal pattern analysis
 - Short format: completable in 5-10 minutes
-- Saved to `~/.lifestack/journal/{date}.md`
+- Saved to `~/.miragoe/journal/{date}.md`
 
 ## Phase 2 Implementation Notes
 
@@ -29,5 +29,5 @@ When implemented, `/journal` will:
 1. Read the user's vision statement and recent checkpoint
 2. Present identity-anchored journaling prompts
 3. Guide a 5-10 minute reflection
-4. Save the entry to `~/.lifestack/journal/{date}.md`
+4. Save the entry to `~/.miragoe/journal/{date}.md`
 5. Optionally surface patterns from previous entries

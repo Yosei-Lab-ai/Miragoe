@@ -1,20 +1,20 @@
-# Lifestack
+# Miragoe
 
 **A self-actualization skill pack for Claude Code.**
 
-> gstack ships products. Lifestack ships *you*.
+> gstack ships products. Miragoe ships *you*.
 
 ## Core Philosophy: Identity-First Achievement
 
 Most productivity systems start with goals: "I want to run a marathon."
-Lifestack starts with identity: **"I am a runner."**
+Miragoe starts with identity: **"I am a runner."**
 
 This is not wordplay. Research in Identity-Based Motivation (Oyserman, 2007) and
 James Clear's identity-based habits framework shows that when people adopt an
 identity *first*, their behavior naturally aligns — not through willpower, but
 through self-consistency. You don't need discipline to act like yourself.
 
-Lifestack encodes this insight into a repeatable pipeline:
+Miragoe encodes this insight into a repeatable pipeline:
 
 ```
 Identity → Map → Act → Check → Adjust → Commit → Reflect
@@ -27,8 +27,8 @@ Identity → Map → Act → Check → Adjust → Commit → Reflect
 
 ```bash
 # 1. Install
-git clone https://github.com/sho/lifestack.git
-cd lifestack && bash setup
+git clone https://github.com/sho/miragoe.git
+cd miragoe && bash setup
 
 # 2. Declare who you are
 /vision
@@ -55,7 +55,7 @@ cd lifestack && bash setup
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│                    LIFESTACK PIPELINE                    │
+│                    MIRAGOE PIPELINE                    │
 │                                                         │
 │  ┌──────────┐   ┌──────┐   ┌─────┐   ┌───────────┐    │
 │  │ /vision  │──▶│ /map │──▶│ Act │──▶│/checkpoint│    │
@@ -77,7 +77,7 @@ cd lifestack && bash setup
 
 ## Psychological Foundations
 
-Lifestack draws from:
+Miragoe draws from:
 
 - **Identity-Based Motivation** (Oyserman, 2007) — People are more likely to act
   when behavior feels identity-congruent ("this is what someone like me does")
@@ -92,7 +92,7 @@ Lifestack draws from:
 
 ## Comparison with gstack
 
-| | gstack | Lifestack |
+| | gstack | Miragoe |
 |---|---|---|
 | **Domain** | Software development | Personal self-actualization |
 | **Unit of work** | Sprint / PR | Identity cycle / week |
@@ -100,11 +100,11 @@ Lifestack draws from:
 | **Core metric** | Velocity | Identity Alignment Score |
 | **Philosophy** | Ship fast, learn fast | Be first, do follows |
 
-They complement each other. Use gstack for your craft. Use Lifestack for yourself.
+They complement each other. Use gstack for your craft. Use Miragoe for yourself.
 
 ## Privacy
 
-All data is stored locally in `~/.lifestack/`. Nothing is sent to any cloud
+All data is stored locally in `~/.miragoe/`. Nothing is sent to any cloud
 service. Your identity work stays on your machine.
 
 ## License

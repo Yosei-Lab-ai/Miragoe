@@ -25,7 +25,7 @@ External motivation fades. Internal motivation — hearing from the person you'r
 ## Phase 2 Implementation Notes
 
 When implemented, `/mentor` will:
-1. Read `~/.lifestack/vision.md` deeply to construct the future self persona
+1. Read `~/.miragoe/vision.md` deeply to construct the future self persona
 2. Read recent checkpoints and journal entries for context
 3. Ask the user what they need guidance on
 4. Respond as the future self with specific, identity-grounded advice

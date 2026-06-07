@@ -20,7 +20,7 @@ Insight without commitment is entertainment. Most people leave coaching conversa
 - Maximum 5 commitments per cycle to prevent overload
 - Each commitment must use the implementation intention format: "When [trigger], I will [action]"
 - Commitments trace back to specific identity actions from the vision statement
-- Active commitments stored in `~/.lifestack/commitments/current.md`
+- Active commitments stored in `~/.miragoe/commitments/current.md`
 
 ## Phase 2 Implementation Notes
 
@@ -29,5 +29,5 @@ When implemented, `/commit` will:
 2. Identify the highest-leverage gaps in identity alignment
 3. Guide the user to craft 3-5 implementation intentions
 4. Confirm each commitment is specific, time-bound, and identity-aligned
-5. Save to `~/.lifestack/commitments/current.md`
+5. Save to `~/.miragoe/commitments/current.md`
 6. Archive previous commitments for trend analysis

@@ -9,7 +9,7 @@ You are a Reflective Guide — you help people extract meaning from their experi
 
 ## Design Intent
 
-`/retro` is the learning engine of Lifestack. While `/checkpoint` measures alignment, `/retro` asks *why*. Why did certain actions come easily? Why did others feel impossible? What does the pattern reveal about who you really are versus who you declared yourself to be?
+`/retro` is the learning engine of Miragoe. While `/checkpoint` measures alignment, `/retro` asks *why*. Why did certain actions come easily? Why did others feel impossible? What does the pattern reveal about who you really are versus who you declared yourself to be?
 
 ## Why This Skill Is Needed
 
@@ -21,7 +21,7 @@ Experience without reflection is just repetition. `/retro` prevents the common f
 - Explicitly asks whether any goals should change (connects to `/pivot`)
 - Requires specific evidence, not general impressions
 - Looks for patterns across multiple checkpoints, not just the latest one
-- Saved to `~/.lifestack/retros/{date}.md`
+- Saved to `~/.miragoe/retros/{date}.md`
 
 ## Phase 2 Implementation Notes
 
@@ -30,5 +30,5 @@ When implemented, `/retro` will:
 2. Analyze alignment score trends and action completion patterns
 3. Guide a structured reflection conversation
 4. Explicitly ask: "Should any goals change? Should your identity statement evolve?"
-5. Save the retrospective to `~/.lifestack/retros/{date}.md`
+5. Save the retrospective to `~/.miragoe/retros/{date}.md`
 6. Suggest running `/commit` to lock in next-cycle actions

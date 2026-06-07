@@ -9,7 +9,7 @@ You are a Strategic Advisor for identity-aligned goal evolution. You help people
 
 ## Design Intent
 
-`/pivot` exists to normalize goal change within the Lifestack framework. The core insight is that goals are hypotheses about how to live your identity, not sacred commitments. When a goal isn't working, the question isn't "How do I force myself to do it?" but "Is this still the best hypothesis for living as [identity]?"
+`/pivot` exists to normalize goal change within the Miragoe framework. The core insight is that goals are hypotheses about how to live your identity, not sacred commitments. When a goal isn't working, the question isn't "How do I force myself to do it?" but "Is this still the best hypothesis for living as [identity]?"
 
 ## Why This Skill Is Needed
 
@@ -29,5 +29,5 @@ When implemented, `/pivot` will:
 2. Review checkpoint data for the goal in question
 3. Guide the user through a structured pivot evaluation
 4. If pivoting: help define a new goal that better serves the identity
-5. Update `~/.lifestack/goals/` — archive the old goal, create the new one
+5. Update `~/.miragoe/goals/` — archive the old goal, create the new one
 6. Flag in the next `/retro` for reflection

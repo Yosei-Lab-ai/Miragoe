@@ -1,6 +1,6 @@
-# Lifestack Skills
+# Miragoe Skills
 
-The complete guide to every Lifestack skill — what it does, why it exists,
+The complete guide to every Miragoe skill — what it does, why it exists,
 how to use it, and how it connects to the rest of the pipeline.
 
 ---
@@ -14,7 +14,7 @@ Most personal development starts with goals:
 The problem: motivation fades, plans break, and you're left with willpower as
 your only engine. Willpower is a depletable resource. It always runs out.
 
-Lifestack inverts this:
+Miragoe inverts this:
 
 > "I am a runner." → actions flow from identity → measure alignment → achievement follows
 
@@ -32,7 +32,7 @@ This is backed by research:
 - **Self-Determination Theory** (Deci & Ryan) — intrinsic motivation requires
   autonomy, competence, and relatedness
 
-Lifestack is the system that makes this actionable.
+Miragoe is the system that makes this actionable.
 
 ---
 
@@ -40,7 +40,7 @@ Lifestack is the system that makes this actionable.
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                      LIFESTACK PIPELINE                      │
+│                      MIRAGOE PIPELINE                      │
 │                                                              │
 │   ┌──────────┐   ┌──────┐   ┌─────┐   ┌───────────┐       │
 │   │ /vision  │──▶│ /map │──▶│ Act │──▶│/checkpoint│       │
@@ -96,7 +96,7 @@ Lifestack is the system that makes this actionable.
 **Persona:** Identity Architect
 **Status:** Active (Phase 1)
 **Duration:** 20-45 minutes
-**Output:** `~/.lifestack/goals/vision-{slug}.md`
+**Output:** `~/.miragoe/goals/vision-{slug}.md`
 
 ### Why This Skill Exists
 
@@ -369,7 +369,7 @@ adjusting it; (c) installing the route mindset: "this is already done."
 
 **Persona:** Strategic Life Planner
 **Status:** Phase 2 (planned)
-**Output:** `~/.lifestack/goals/{slug}.md`
+**Output:** `~/.miragoe/goals/{slug}.md`
 
 ### Why This Skill Exists
 
@@ -394,13 +394,13 @@ structure from day one.
 
 ### How It Will Work
 
-1. Read your Vision Statement from `~/.lifestack/goals/vision-*.md`
+1. Read your Vision Statement from `~/.miragoe/goals/vision-*.md`
 2. Walk through each relevant life domain
 3. For each domain, define 1-3 goals with:
    - Success criteria (how do you know it's working?)
    - Pivot criteria (when should you change course?)
    - Weekly actions (specific, schedulable, binary)
-4. Save each goal as a separate file in `~/.lifestack/goals/`
+4. Save each goal as a separate file in `~/.miragoe/goals/`
 5. Generate a weekly overview: all actions across all goals in one view
 
 ### Imagined Usage
@@ -432,7 +432,7 @@ structure from day one.
 
 **Persona:** Alignment Analyst — compassionate but unflinching
 **Status:** Phase 2 (planned)
-**Output:** `~/.lifestack/checkpoints/{date}.md`
+**Output:** `~/.miragoe/checkpoints/{date}.md`
 
 ### Why This Skill Exists
 
@@ -496,7 +496,7 @@ Every score point is backed by specific evidence. No vibes-based scoring.
 
 **Persona:** Commitment Architect
 **Status:** Phase 2 (planned)
-**Output:** `~/.lifestack/commitments/current.md`
+**Output:** `~/.miragoe/commitments/current.md`
 
 ### Why This Skill Exists
 
@@ -543,7 +543,7 @@ with 15 commitments has zero commitments.
 
 **Persona:** Reflective Guide
 **Status:** Phase 2 (planned)
-**Output:** `~/.lifestack/retros/{date}.md`
+**Output:** `~/.miragoe/retros/{date}.md`
 
 ### Why This Skill Exists
 
@@ -612,7 +612,7 @@ Plus one explicit question:
 **Persona:** Journaling Companion
 **Status:** Phase 2 (planned)
 **Duration:** 5-10 minutes
-**Output:** `~/.lifestack/journal/{date}.md`
+**Output:** `~/.miragoe/journal/{date}.md`
 
 ### Why This Skill Exists
 
@@ -725,7 +725,7 @@ excuses, but infinite patience for genuine struggle.
 
 **Persona:** Strategic Advisor for identity-aligned goal evolution
 **Status:** Phase 2 (planned)
-**Output:** Updated files in `~/.lifestack/goals/`
+**Output:** Updated files in `~/.miragoe/goals/`
 
 ### Why This Skill Exists
 
@@ -739,7 +739,7 @@ isn't working (maybe your knees hurt, maybe mornings don't work), you can change
 the goal without touching the identity.
 
 This is the same insight as gstack's approach to product development: the
-vision stays, the strategy pivots. Lifestack applies it to personal development:
+vision stays, the strategy pivots. Miragoe applies it to personal development:
 the identity stays, the goals pivot.
 
 ### Three Outcomes
@@ -827,10 +827,10 @@ the right intervention.
 
 ## Common Patterns Across All Skills
 
-Every Lifestack skill shares these interaction principles:
+Every Miragoe skill shares these interaction principles:
 
 ### Identity Anchoring
-Every conversation starts by reading `~/.lifestack/goals/vision-*.md`. The user's
+Every conversation starts by reading `~/.miragoe/goals/vision-*.md`. The user's
 declared identity is referenced throughout — it's the constant in every interaction.
 
 ### Evidence Over Feelings
@@ -857,7 +857,7 @@ progress along the route), `/commit` (next steps on the route), and `/retro`
 
 ## Privacy
 
-All Lifestack data is stored locally in `~/.lifestack/`. Nothing is transmitted
+All Miragoe data is stored locally in `~/.miragoe/`. Nothing is transmitted
 to any external service. Your identity work, journal entries, and alignment
 scores stay on your machine.
 

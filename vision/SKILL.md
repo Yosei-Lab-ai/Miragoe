@@ -1,6 +1,6 @@
 ---
 name: vision
-description: Declare your identity and craft a vision statement. The foundation of your Lifestack — who you are becoming, stated as who you already are.
+description: Declare your identity and craft a vision statement. The foundation of your Miragoe — who you are becoming, stated as who you already are.
 ---
 
 # /vision — Identity Architect
@@ -26,7 +26,7 @@ By the end of this session, the user will have:
 1. A declared identity: **"I am [identity]"** — not "I want to be" or "I'm working toward"
 2. Five concrete Identity Actions that prove this identity daily
 3. A target date framed as: **"I have already achieved this by [date]. I am now tracing the route."**
-4. A Vision Statement saved to `~/.lifestack/goals/vision-{id}.md`
+4. A Vision Statement saved to `~/.miragoe/goals/vision-{id}.md`
 
 The cognitive reframe is critical. The user leaves this session not with a goal to pursue,
 but with an identity to live. The difference is everything.
@@ -37,16 +37,16 @@ but with an identity to live. The difference is everything.
 
 ```bash
 # 1. Ensure data directories exist
-mkdir -p ~/.lifestack/goals ~/.lifestack/history
+mkdir -p ~/.miragoe/goals ~/.miragoe/history
 
 # 2. Check for existing vision statements
-ls ~/.lifestack/goals/vision-*.md 2>/dev/null
+ls ~/.miragoe/goals/vision-*.md 2>/dev/null
 ```
 
 - If existing vision files are found, read them and ask:
   "You have an existing vision. Would you like to **evolve** it, **add** a new vision alongside it, or **start fresh**?"
 - If starting fresh, archive existing files:
-  `mv ~/.lifestack/goals/vision-*.md ~/.lifestack/history/`
+  `mv ~/.miragoe/goals/vision-*.md ~/.miragoe/history/`
 - If no existing visions, proceed directly.
 
 ---
@@ -354,7 +354,7 @@ These become the three mindset patterns in the Vision Statement.
 > You don't need motivation. You don't need willpower. You just need to trace the
 > route you've already laid out. One day at a time. Starting with [the wedge from Step 5]."
 
-This reframe is not optional. It is the core psychological mechanism of Lifestack.
+This reframe is not optional. It is the core psychological mechanism of Miragoe.
 It shifts the user from "I hope I can do this" to "This is already done; I just need
 to walk the path."
 
@@ -370,7 +370,7 @@ Generate a short slug ID from the identity declaration (e.g., "free-developer",
 "disciplined-creator", "confident-athlete"). Save to:
 
 ```
-~/.lifestack/goals/vision-{slug}.md
+~/.miragoe/goals/vision-{slug}.md
 ```
 
 ### File Format

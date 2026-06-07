@@ -1,4 +1,4 @@
-# Lifestack Design Ethos
+# Miragoe Design Ethos
 
 ## Identity-First Achievement
 
@@ -6,7 +6,7 @@ The dominant model of personal development is goal-first:
 
 1. Set a goal → 2. Make a plan → 3. Execute → 4. Achieve → 5. Become
 
-Lifestack inverts this:
+Miragoe inverts this:
 
 1. **Become** → 2. Align actions → 3. Measure alignment → 4. Achievement follows
 
@@ -106,7 +106,7 @@ to evolve.
 
 ## Philosophical Comparison with gstack
 
-| Dimension | gstack | Lifestack |
+| Dimension | gstack | Miragoe |
 |-----------|--------|-----------|
 | **Core question** | "What should we ship?" | "Who am I becoming?" |
 | **Unit of truth** | Working software | Aligned action |
@@ -119,4 +119,4 @@ to evolve.
 
 They are the same pattern applied to different domains:
 - gstack: Observe → Orient → Decide → Act → Ship → Learn
-- Lifestack: Declare → Map → Act → Check → Adjust → Commit → Reflect
+- Miragoe: Declare → Map → Act → Check → Adjust → Commit → Reflect

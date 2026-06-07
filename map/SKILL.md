@@ -24,13 +24,13 @@ The goal tree structure also enables `/checkpoint` to measure alignment precisel
 - Goals are treated as hypotheses, not commitments (see ETHOS.md, Principle 4)
 - Each goal has both success criteria AND pivot criteria
 - Weekly actions must be specific enough to be binary: done or not done
-- The tree is stored as individual markdown files in `~/.lifestack/goals/`
+- The tree is stored as individual markdown files in `~/.miragoe/goals/`
 
 ## Phase 2 Implementation Notes
 
 When implemented, `/map` will:
-1. Read `~/.lifestack/vision.md` to anchor in the user's identity
+1. Read `~/.miragoe/vision.md` to anchor in the user's identity
 2. Walk through each life domain and ask what goals serve the identity
 3. For each goal, define success criteria, pivot criteria, and weekly actions
-4. Save each goal as a separate file in `~/.lifestack/goals/`
-5. Generate a weekly action summary in `~/.lifestack/goals/weekly-overview.md`
+4. Save each goal as a separate file in `~/.miragoe/goals/`
+5. Generate a weekly action summary in `~/.miragoe/goals/weekly-overview.md`

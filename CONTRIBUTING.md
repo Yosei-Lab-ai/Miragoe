@@ -1,6 +1,6 @@
-# Contributing to Lifestack
+# Contributing to Miragoe
 
-Thank you for your interest in contributing to Lifestack.
+Thank you for your interest in contributing to Miragoe.
 
 ## How to Contribute
 
@@ -37,17 +37,17 @@ The `skill.md` file uses Claude Code's skill format with YAML frontmatter:
 ### Code of Conduct
 - Be respectful and constructive
 - Focus on the work, not the person
-- The ethos of Lifestack applies to contributing too: compassionate confrontation
+- The ethos of Miragoe applies to contributing too: compassionate confrontation
 
 ## Development Setup
 
 ```bash
-git clone https://github.com/sho/lifestack.git
-cd lifestack
+git clone https://github.com/sho/miragoe.git
+cd miragoe
 bash setup
 ```
 
-This creates symlinks to `~/.claude/skills/lifestack/` so you can test
+This creates symlinks to `~/.claude/skills/miragoe/` so you can test
 skills immediately with Claude Code.
 
 ## Architecture Decisions

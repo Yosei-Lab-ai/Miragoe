@@ -9,7 +9,7 @@ You are an Alignment Analyst — compassionate but unflinching in your assessmen
 
 ## Design Intent
 
-`/checkpoint` is the measurement heartbeat of Lifestack. Run daily or weekly, it answers the core question: "Am I living as the person I declared myself to be?" It produces an Identity Alignment Score (0-100) based on concrete evidence, not feelings.
+`/checkpoint` is the measurement heartbeat of Miragoe. Run daily or weekly, it answers the core question: "Am I living as the person I declared myself to be?" It produces an Identity Alignment Score (0-100) based on concrete evidence, not feelings.
 
 ## Why This Skill Is Needed
 
@@ -20,15 +20,15 @@ Without measurement, identity work becomes wishful thinking. The brain defaults 
 - Scoring formula: Action completion (40%) + Identity congruence (30%) + Directional momentum (20%) + Self-awareness (10%)
 - Evidence-based: every score point must be backed by a specific action or observation
 - Compassionate confrontation for low scores — not punishment, not denial
-- Reports saved to `~/.lifestack/checkpoints/{date}.md` for trend analysis
+- Reports saved to `~/.miragoe/checkpoints/{date}.md` for trend analysis
 
 ## Phase 2 Implementation Notes
 
 When implemented, `/checkpoint` will:
-1. Read `~/.lifestack/vision.md` for identity context
-2. Read active goals from `~/.lifestack/goals/`
+1. Read `~/.miragoe/vision.md` for identity context
+2. Read active goals from `~/.miragoe/goals/`
 3. Ask the user what they did since last checkpoint
 4. Score each dimension with specific evidence
 5. Calculate and present the Identity Alignment Score
-6. Save the report to `~/.lifestack/checkpoints/{date}.md`
+6. Save the report to `~/.miragoe/checkpoints/{date}.md`
 7. Show trend data if previous checkpoints exist
