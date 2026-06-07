@@ -27,8 +27,8 @@ Identity → Map → Act → Check → Adjust → Commit → Reflect
 
 ```bash
 # 1. Install
-git clone https://github.com/sho/miragoe.git
-cd miragoe && bash setup
+git clone https://github.com/Yosei-Lab-ai/Miragoe.git
+cd Miragoe && bash setup
 
 # 2. Declare who you are
 /vision
@@ -106,6 +106,12 @@ They complement each other. Use gstack for your craft. Use Miragoe for yourself.
 
 All data is stored locally in `~/.miragoe/`. Nothing is sent to any cloud
 service. Your identity work stays on your machine.
+
+## 💖 Support
+
+Miragoe is free and MIT-licensed. If it helps you become who you want to be,
+consider [sponsoring its development](https://github.com/sponsors/Yosei-Lab-ai) —
+sponsorship funds new skills, better docs, and faster issue turnaround.
 
 ## License
 
