@@ -17,7 +17,8 @@ Daily identity contact is crucial for behavior change. Research shows that peopl
 
 ## Key Design Decisions
 
-- Always begins by reading `~/.miragoe/vision.md` for context
+- Always begins by reading `~/.miragoe/state/current.md` and the referenced approved
+  vision in `~/.miragoe/goals/` for context
 - Four core sections: Identity Check-in, Today's Evidence, Friction, Tomorrow's Intention
 - Mood tracking (1-10) for longitudinal pattern analysis
 - Short format: completable in 5-10 minutes

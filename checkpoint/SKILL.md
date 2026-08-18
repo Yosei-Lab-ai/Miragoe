@@ -25,10 +25,17 @@ Without measurement, identity work becomes wishful thinking. The brain defaults 
 ## Phase 2 Implementation Notes
 
 When implemented, `/checkpoint` will:
-1. Read `~/.miragoe/vision.md` for identity context
+1. Read `~/.miragoe/state/current.md` and the approved vision for identity context
 2. Read active goals from `~/.miragoe/goals/`
 3. Ask the user what they did since last checkpoint
 4. Score each dimension with specific evidence
 5. Calculate and present the Identity Alignment Score
-6. Save the report to `~/.miragoe/checkpoints/{date}.md`
+6. Save a new immutable report to `~/.miragoe/checkpoints/{date}-{id}.md`
 7. Show trend data if previous checkpoints exist
+8. Put any recommended identity, goal, or commitment change in a proposal and update
+   the resume pointer without changing approved state
+
+## Artifact Contract
+
+Follow `../docs/artifact-lifecycle.md`. A checkpoint is an observation, not an approval.
+Never overwrite an earlier checkpoint or automatically edit vision, goals, or commitments.

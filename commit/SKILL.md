@@ -29,5 +29,13 @@ When implemented, `/commit` will:
 2. Identify the highest-leverage gaps in identity alignment
 3. Guide the user to craft 3-5 implementation intentions
 4. Confirm each commitment is specific, time-bound, and identity-aligned
-5. Save to `~/.miragoe/commitments/current.md`
-6. Archive previous commitments for trend analysis
+5. Save the draft to `~/.miragoe/proposals/commitment-{date}.md`
+6. Show the proposed replacement and wait for explicit user approval
+7. After approval, archive the previous commitments and replace
+   `~/.miragoe/commitments/current.md`
+8. Update `~/.miragoe/state/current.md` with the next review point
+
+## Artifact Contract
+
+Follow `../docs/artifact-lifecycle.md`. `/commit` is the approval point for next-cycle
+commitments; it must not treat suggestions from `/checkpoint` or `/retro` as accepted.

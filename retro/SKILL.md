@@ -30,5 +30,11 @@ When implemented, `/retro` will:
 2. Analyze alignment score trends and action completion patterns
 3. Guide a structured reflection conversation
 4. Explicitly ask: "Should any goals change? Should your identity statement evolve?"
-5. Save the retrospective to `~/.miragoe/retros/{date}.md`
-6. Suggest running `/commit` to lock in next-cycle actions
+5. Save a new immutable retrospective to `~/.miragoe/retros/{date}-{id}.md`
+6. Put suggested identity, goal, or commitment changes in a clearly labeled proposal
+7. Update `~/.miragoe/state/current.md` and suggest `/commit` for the next cycle
+
+## Artifact Contract
+
+Follow `../docs/artifact-lifecycle.md`. `/retro` records evidence and proposes changes;
+it never rewrites the approved vision, goals, or commitments by itself.

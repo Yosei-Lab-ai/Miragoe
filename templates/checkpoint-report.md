@@ -5,6 +5,10 @@ actions_completed: {{n}}
 actions_planned: {{n}}
 previous_score: {{previous score or "first checkpoint"}}
 trend: {{up | down | stable | first}}
+status: observed
+source_skill: checkpoint
+resume_from: {{next skill or concrete next question}}
+approval_required: false
 ---
 
 # Identity Alignment Score: {{score}}/100
@@ -50,6 +54,8 @@ Actions I committed to but did not complete:
 ## Adjustments
 
 {{What one small change to my environment, schedule, or approach would improve alignment next cycle?}}
+
+These are proposals only. They do not change approved vision, goals, or commitments.
 
 ## Next Actions
 

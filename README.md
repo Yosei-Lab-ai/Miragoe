@@ -107,6 +107,13 @@ They complement each other. Use gstack for your craft. Use Miragoe for yourself.
 All data is stored locally in `~/.miragoe/`. Nothing is sent to any cloud
 service. Your identity work stays on your machine.
 
+## Artifact safety
+
+Miragoe keeps proposed changes separate from approved identity, goals, and
+commitments. `~/.miragoe/state/current.md` records where to resume; checkpoint and
+retro observations never rewrite approved state. See
+[`docs/artifact-lifecycle.md`](docs/artifact-lifecycle.md).
+
 ## 💖 Support
 
 Miragoe is free and MIT-licensed. If it helps you become who you want to be,

@@ -2,6 +2,11 @@
 week_of: {{date}}
 identity: "I am {{identity}}"
 alignment_target: {{target score, e.g. 75}}
+status: {{proposed | approved | archived}}
+source_skill: commit
+resume_from: {{next review date or concrete next question}}
+approval_required: {{true | false}}
+approved_at: {{timestamp or null}}
 ---
 
 # Weekly Plan: {{date range}}

@@ -55,7 +55,7 @@ who I am?
 
 ## Data Model
 
-### Vision Statement (`~/.miragoe/vision.md`)
+### Approved Vision Statement (`~/.miragoe/goals/vision-{slug}.md`)
 
 ```markdown
 ---
@@ -186,9 +186,8 @@ identity_reflection: [one sentence]
 
 ```
 ~/.miragoe/
-├── vision.md                  # Current active vision statement
-├── goals/                     # Goal tree (one file per goal)
-│   ├── morning-movement.md
+├── goals/                     # Approved vision and active goals
+│   ├── vision-disciplined-creator.md
 │   └── deep-work-blocks.md
 ├── checkpoints/               # Weekly/daily checkpoint reports
 │   ├── 2026-03-17.md
@@ -199,9 +198,16 @@ identity_reflection: [one sentence]
 │   └── 2026-03-24.md
 ├── commitments/               # Active commitments
 │   └── current.md
+├── proposals/                 # `~/.miragoe/proposals/`: unapproved diffs
+├── state/
+│   └── current.md             # Resume pointer: last stage, next step, pending proposal
 └── history/                   # Archived vision statements
     └── vision-2026-03-24.md
 ```
+
+See `docs/artifact-lifecycle.md` for the proposal/approval rules. Checkpoint and
+retro files are append-only observations. They may recommend a change, but only an
+explicitly approved proposal can replace identity, goals, or commitments.
 
 ## Obsidian Integration
 
@@ -226,7 +232,8 @@ No plugins are required for basic functionality. Recommended plugins:
 
 Every skill begins with:
 
-1. Check if `~/.miragoe/vision.md` exists
+1. Read `~/.miragoe/state/current.md`, then resolve the referenced approved vision
+   in `~/.miragoe/goals/`
 2. If yes: Read it, extract the Identity Declaration, greet the user with
    reference to their identity
 3. If no: Suggest running `/vision` first (except `/vision` itself)
