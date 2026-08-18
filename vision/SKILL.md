@@ -417,7 +417,7 @@ End with:
 > Your first move: [wedge from Step 5]. Do it today.
 >
 > When you're ready to break this into weekly actions, run `/map`.
-> When you want to check your alignment, run `/checkpoint`."
+> When you want to check your alignment, run `/miragoe-checkpoint`."
 
 Do NOT add motivational fluff. Do NOT say "You've got this!" or "I believe in you!"
 The declaration speaks for itself. End clean.

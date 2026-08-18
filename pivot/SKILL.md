@@ -33,7 +33,7 @@ When implemented, `/pivot` will:
 6. Show the old/new diff and wait for explicit user approval
 7. After approval, archive the old goal, activate the replacement, and update
    `~/.miragoe/state/current.md`
-8. Flag the decision in the next `/retro` for reflection
+8. Flag the decision in the next `/miragoe-retro` for reflection
 
 ## Artifact Contract
 

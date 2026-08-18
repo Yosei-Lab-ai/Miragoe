@@ -4,7 +4,8 @@ set -euo pipefail
 MIRAGOE_DIR="$(cd "$(dirname "$0")" && pwd)"
 SKILLS_ROOT="${HOME}/.claude/skills"
 DATA_DIR="${HOME}/.miragoe"
-SKILLS=(vision map checkpoint commit retro journal mentor pivot unblock)
+LEGACY_DATA_DIR="${HOME}/.lifestack"
+SKILLS=(vision map commit journal mentor pivot unblock miragoe-checkpoint miragoe-retro)
 
 is_expected_link() {
     local source="$1" target="$2" actual expected
@@ -58,26 +59,58 @@ for skill in "${SKILLS[@]}"; do
     link_skill "$skill"
 done
 
+MIGRATED_VISION_PATH=""
+if [ -d "$LEGACY_DATA_DIR" ] && [ ! -e "$DATA_DIR" ]; then
+    cp -a "$LEGACY_DATA_DIR" "$DATA_DIR"
+    echo "[migrate] Copied legacy data to ${DATA_DIR}; preserved ${LEGACY_DATA_DIR} as backup."
+elif [ -d "$LEGACY_DATA_DIR" ] && [ -e "$DATA_DIR" ]; then
+    echo "[notice] Both ${LEGACY_DATA_DIR} and ${DATA_DIR} exist; no automatic merge was attempted."
+fi
+
 mkdir -p "$DATA_DIR"/{goals,checkpoints,journal,retros,commitments,history,proposals,state}
+if [ -f "$DATA_DIR/vision.md" ] && ! compgen -G "$DATA_DIR/goals/vision-*.md" >/dev/null; then
+    MIGRATED_VISION_PATH="goals/vision-legacy.md"
+    cp -p "$DATA_DIR/vision.md" "$DATA_DIR/$MIGRATED_VISION_PATH"
+    echo "[migrate] Preserved the approved legacy vision at ${DATA_DIR}/${MIGRATED_VISION_PATH}."
+fi
+
 if [ ! -e "$DATA_DIR/state/current.md" ]; then
-    printf '%s\n' \
-        '---' \
-        'status: ready' \
-        'last_completed: setup' \
-        'next_skill: vision' \
-        'pending_proposal: null' \
-        'approval_required: false' \
-        '---' \
-        '' \
-        '# Resume' \
-        '' \
-        'Run `/vision`. Proposed identity, goal, pivot, and commitment changes require explicit user approval before activation.' \
-        > "$DATA_DIR/state/current.md"
+    if [ -n "$MIGRATED_VISION_PATH" ]; then
+        printf '%s\n' \
+            '---' \
+            'status: ready' \
+            'last_completed: legacy-data-migration' \
+            'next_skill: map' \
+            "approved_vision: ${MIGRATED_VISION_PATH}" \
+            'pending_proposal: null' \
+            'approval_required: false' \
+            '---' \
+            '' \
+            '# Resume' \
+            '' \
+            'Your existing approved vision was preserved. Continue with `/map`.' \
+            > "$DATA_DIR/state/current.md"
+    else
+        printf '%s\n' \
+            '---' \
+            'status: ready' \
+            'last_completed: setup' \
+            'next_skill: vision' \
+            'pending_proposal: null' \
+            'approval_required: false' \
+            '---' \
+            '' \
+            '# Resume' \
+            '' \
+            'Run `/vision`. Proposed identity, goal, pivot, and commitment changes require explicit user approval before activation.' \
+            > "$DATA_DIR/state/current.md"
+    fi
 fi
 
 echo ""
 echo "=== Miragoe installed ==="
 echo "Data root: ${DATA_DIR}"
 echo "Resume pointer: ${DATA_DIR}/state/current.md"
+echo "gstack-safe aliases: /miragoe-checkpoint and /miragoe-retro"
 echo "Approval boundary: proposals never replace approved identity, goals, or commitments without explicit user approval."
 echo "Start with /vision."

@@ -17,7 +17,7 @@ The skill works by decomposing identity into domains (health, career, relationsh
 
 Most people fail not because they lack vision, but because they lack a map from vision to Tuesday afternoon. `/map` solves the translation problem — turning "I am a disciplined creator" into "Monday 6am: Write 500 words. Wednesday 7pm: Review and edit. Friday: Publish one piece."
 
-The goal tree structure also enables `/checkpoint` to measure alignment precisely: did you do the specific actions that your identity demands?
+The goal tree structure also enables `/miragoe-checkpoint` to measure alignment precisely: did you do the specific actions that your identity demands?
 
 ## Key Design Decisions
 

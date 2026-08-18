@@ -8,7 +8,8 @@ agile sprint cycles, adapted for personal identity work:
 ```
 ┌─────────┐     ┌─────┐     ┌─────┐     ┌───────────┐
 │ DECLARE │────▶│ MAP │────▶│ ACT │────▶│   CHECK   │
-│ /vision │     │/map │     │daily│     │/checkpoint│
+│ /vision │     │/map │     │daily│     │ /miragoe- │
+│         │     │     │     │     │     │checkpoint │
 └─────────┘     └─────┘     └─────┘     └─────┬─────┘
      ▲                                         │
      │ identity                          alignment
@@ -16,7 +17,8 @@ agile sprint cycles, adapted for personal identity work:
      │                                         │
 ┌────┴─────┐    ┌───────┐    ┌────────┐        │
 │ REFLECT  │◀───│COMMIT │◀───│ ADJUST │◀───────┘
-│  /retro  │    │/commit│    │ /pivot │
+│/miragoe- │    │/commit│    │ /pivot │
+│  retro   │    │       │    │        │
 └──────────┘    └───────┘    └────────┘
 ```
 
@@ -32,7 +34,7 @@ Each goal includes success criteria, pivot criteria, and a target date.
 The user lives their life, taking actions aligned with their identity.
 Miragoe does not interrupt daily life — it provides structure for reflection.
 
-### Phase 4: Check (`/checkpoint`)
+### Phase 4: Check (`/miragoe-checkpoint`)
 Measure Identity Alignment Score. The user reports what they did, and the system
 scores alignment against declared identity and planned actions.
 
@@ -44,7 +46,7 @@ keep the identity.
 Lock in specific commitments for the next cycle. Implementation intentions:
 "When [trigger], I will [action]."
 
-### Phase 7: Reflect (`/retro`)
+### Phase 7: Reflect (`/miragoe-retro`)
 End-of-cycle retrospective. What worked? What didn't? What did I learn about
 who I am?
 

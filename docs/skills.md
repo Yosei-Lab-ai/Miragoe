@@ -43,7 +43,7 @@ Miragoe is the system that makes this actionable.
 │                      MIRAGOE PIPELINE                      │
 │                                                              │
 │   ┌──────────┐   ┌──────┐   ┌─────┐   ┌───────────┐       │
-│   │ /vision  │──▶│ /map │──▶│ Act │──▶│/checkpoint│       │
+│   │ /vision  │──▶│ /map │──▶│ Act │──▶│/miragoe-checkpoint│       │
 │   │ Declare  │   │ Plan │   │Daily│   │  Measure  │       │
 │   └──────────┘   └──────┘   └─────┘   └─────┬─────┘       │
 │        ▲                                      │             │
@@ -52,7 +52,7 @@ Miragoe is the system that makes this actionable.
 │        │     │    └────────┘   └──────┘                     │
 │        │     ▼                                              │
 │   ┌────┴─────┐   ┌────────┐                                │
-│   │ /commit  │──▶│ /retro │                                 │
+│   │ /commit  │──▶│ /miragoe-retro │                                 │
 │   │ Lock in  │   │Reflect │                                 │
 │   └──────────┘   └────────┘                                │
 │                                                              │
@@ -65,10 +65,10 @@ Miragoe is the system that makes this actionable.
 1. `/vision` — Declare your identity (once, then evolve as needed)
 2. `/map` — Break identity into goals and weekly actions
 3. Live your life — take identity-aligned actions daily
-4. `/checkpoint` — Measure alignment (daily or weekly)
+4. `/miragoe-checkpoint` — Measure alignment (daily or weekly)
 5. `/pivot` — Adjust goals if needed (identity stays, goals flex)
 6. `/commit` — Lock in next cycle's actions
-7. `/retro` — Reflect on what worked and what you learned
+7. `/miragoe-retro` — Reflect on what worked and what you learned
 8. Repeat from step 3
 
 ---
@@ -79,9 +79,9 @@ Miragoe is the system that makes this actionable.
 |-------|---------|-------|-------------|
 | [`/vision`](#vision) | Identity Architect | 1 | Declare your identity through an 8-step excavation process |
 | [`/map`](#map) | Strategic Life Planner | 2 | Decompose identity into domains, goals, and weekly actions |
-| [`/checkpoint`](#checkpoint) | Alignment Analyst | 2 | Measure Identity Alignment Score with concrete evidence |
+| [`/miragoe-checkpoint`](#checkpoint) | Alignment Analyst | 2 | Measure Identity Alignment Score with concrete evidence |
 | [`/commit`](#commit) | Commitment Architect | 2 | Create implementation intentions for the next cycle |
-| [`/retro`](#retro) | Reflective Guide | 2 | End-of-cycle retrospective and identity learning |
+| [`/miragoe-retro`](#retro) | Reflective Guide | 2 | End-of-cycle retrospective and identity learning |
 | [`/journal`](#journal) | Journaling Companion | 2 | Daily identity-anchored reflection (5-10 min) |
 | [`/mentor`](#mentor) | Your Future Self | 2 | On-demand coaching from the person you're becoming |
 | [`/pivot`](#pivot) | Strategic Advisor | 2 | Re-evaluate goals without abandoning identity |
@@ -359,7 +359,7 @@ adjusting it; (c) installing the route mindset: "this is already done."
 - **Before /vision:** Nothing. This is where you start.
 - **After /vision:** `/map` to break the identity into a goal tree with weekly actions.
 - **Anytime after:** `/mentor` to hear from the future self you declared. `/pivot` to
-  adjust goals without losing the identity. `/checkpoint` to measure alignment.
+  adjust goals without losing the identity. `/miragoe-checkpoint` to measure alignment.
 
 ---
 
@@ -421,18 +421,18 @@ structure from day one.
 ### Connects To
 
 - **Before:** `/vision` (required — you need an identity before you can map it)
-- **After:** Daily action, then `/checkpoint` to measure alignment
+- **After:** Daily action, then `/miragoe-checkpoint` to measure alignment
 - **If goals need changing:** `/pivot`
 
 ---
 
-## /checkpoint
+## /miragoe-checkpoint
 
 > Measure your Identity Alignment Score.
 
 **Persona:** Alignment Analyst — compassionate but unflinching
 **Status:** Phase 2 (planned)
-**Output:** `~/.miragoe/checkpoints/{date}.md`
+**Output:** `~/.miragoe/miragoe-checkpoints/{date}.md`
 
 ### Why This Skill Exists
 
@@ -441,7 +441,7 @@ not a reliable scorekeeper — it defaults to recency bias, emotional weighting,
 and self-serving narratives. One bad day erases a good week. One good day
 masks a pattern of avoidance.
 
-`/checkpoint` provides an honest, persistent mirror. It asks: "What did you
+`/miragoe-checkpoint` provides an honest, persistent mirror. It asks: "What did you
 actually do? What did you actually skip? What does the data say about who you
 are this week?"
 
@@ -509,7 +509,7 @@ vague intentions by 2-3x. Not "I'll exercise more" but "When my 5:30am alarm
 goes off, I will put on the running shoes I laid out last night and walk out
 the door."
 
-`/commit` takes the insights from `/checkpoint` or `/retro` and converts them
+`/commit` takes the insights from `/miragoe-checkpoint` or `/miragoe-retro` and converts them
 into exactly this format. Maximum 5 commitments per cycle — because a person
 with 15 commitments has zero commitments.
 
@@ -532,18 +532,18 @@ with 15 commitments has zero commitments.
 
 ### Connects To
 
-- **Before:** `/checkpoint` or `/retro` (you commit based on what you learned)
-- **After:** The next cycle of daily action → `/checkpoint`
+- **Before:** `/miragoe-checkpoint` or `/miragoe-retro` (you commit based on what you learned)
+- **After:** The next cycle of daily action → `/miragoe-checkpoint`
 
 ---
 
-## /retro
+## /miragoe-retro
 
 > Reflect on your cycle — what worked, what didn't, what you learned about who you are.
 
 **Persona:** Reflective Guide
 **Status:** Phase 2 (planned)
-**Output:** `~/.miragoe/retros/{date}.md`
+**Output:** `~/.miragoe/miragoe-retros/{date}.md`
 
 ### Why This Skill Exists
 
@@ -551,8 +551,8 @@ Experience without reflection is just repetition. You can complete 12 weekly
 cycles and learn nothing — or you can complete 12 weekly cycles and transform
 your understanding of who you are and how you operate.
 
-`/retro` is the learning engine. While `/checkpoint` asks "What happened?",
-`/retro` asks "Why?" — and more importantly, "What does this reveal about
+`/miragoe-retro` is the learning engine. While `/miragoe-checkpoint` asks "What happened?",
+`/miragoe-retro` asks "Why?" — and more importantly, "What does this reveal about
 who I actually am?"
 
 The most powerful retro insight is when someone realizes their declared identity
@@ -599,7 +599,7 @@ Plus one explicit question:
 
 ### Connects To
 
-- **Before:** Multiple `/checkpoint` cycles (retros work best with pattern data)
+- **Before:** Multiple `/miragoe-checkpoint` cycles (retros work best with pattern data)
 - **After:** `/commit` to act on insights, or `/pivot` if goals need changing
 - **If identity evolves:** `/vision` to redeclare
 
@@ -661,7 +661,7 @@ Every journal entry has four sections:
 ### Connects To
 
 - **Anytime:** `/journal` is not tied to a specific pipeline stage
-- **Feeds into:** `/checkpoint` (journal entries provide evidence)
+- **Feeds into:** `/miragoe-checkpoint` (journal entries provide evidence)
 - **Support:** `/unblock` if journaling reveals consistent resistance
 
 ---
@@ -755,7 +755,7 @@ the identity stays, the goals pivot.
 
 ### Connects To
 
-- **Before:** `/checkpoint` or `/retro` reveals a goal isn't working
+- **Before:** `/miragoe-checkpoint` or `/miragoe-retro` reveals a goal isn't working
 - **After:** `/commit` to lock in new actions, or `/vision` if identity evolved
 
 ---
@@ -819,7 +819,7 @@ the right intervention.
 
 ### Connects To
 
-- **Triggered by:** Consistent action misses in `/checkpoint`, or on-demand
+- **Triggered by:** Consistent action misses in `/miragoe-checkpoint`, or on-demand
 - **If resistance is identity-level:** → `/vision` to redeclare
 - **After unblocking:** `/commit` to lock in the action with an implementation intention
 
@@ -849,8 +849,8 @@ answer shapes the next question. This is a conversation, not a survey.
 
 ### Route Mindset
 The fundamental cognitive frame: "This is already achieved. I am tracing the
-route." This appears in `/vision` (target date), `/checkpoint` (measuring
-progress along the route), `/commit` (next steps on the route), and `/retro`
+route." This appears in `/vision` (target date), `/miragoe-checkpoint` (measuring
+progress along the route), `/commit` (next steps on the route), and `/miragoe-retro`
 (learning from the route so far).
 
 ---

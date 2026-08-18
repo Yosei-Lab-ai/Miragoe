@@ -14,7 +14,10 @@ def require(path: str, needles: list[str]) -> list[str]:
 
 def main() -> int:
     errors: list[str] = []
-    errors += require("setup", ["SKILLS=(vision map checkpoint", ".miragoe", "state/current.md", "explicit user approval"])
+    errors += require("setup", ["miragoe-checkpoint", "miragoe-retro", "LEGACY_DATA_DIR", ".miragoe", "state/current.md", "explicit user approval"])
+    errors += require("scripts/test-setup.sh", ["gstack-checkpoint", "vision-legacy.md", "approved_vision"])
+    errors += require("miragoe-checkpoint/SKILL.md", ["name: miragoe-checkpoint", "../checkpoint/SKILL.md"])
+    errors += require("miragoe-retro/SKILL.md", ["name: miragoe-retro", "../retro/SKILL.md"])
     errors += require("docs/artifact-lifecycle.md", ["Vision proposal", "Approved vision", "Current pointer", "status: proposed", "never approve their own recommendations"])
     for skill in ("vision", "map", "checkpoint", "pivot", "commit", "retro"):
         errors += require(f"{skill}/SKILL.md", ["artifact-lifecycle.md"])

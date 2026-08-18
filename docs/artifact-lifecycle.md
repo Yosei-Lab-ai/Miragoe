@@ -11,11 +11,11 @@ change, but it must not silently rewrite the identity, goals, or current commitm
 | Declare | Approved vision | `~/.miragoe/goals/vision-{slug}.md` | Create or replace only after explicit user approval. Archive the prior approved file first. |
 | Map | Goal proposal | `~/.miragoe/proposals/goal-{slug}.md` | Proposal only; it cannot become active by implication. |
 | Map | Approved goal | `~/.miragoe/goals/{slug}.md` | Activate only after explicit user approval. |
-| Check | Checkpoint observation | `~/.miragoe/checkpoints/{date}-{id}.md` | Append a new immutable observation. Never rewrite an earlier checkpoint. |
+| Check | Checkpoint observation | `~/.miragoe/miragoe-checkpoints/{date}-{id}.md` | Append a new immutable observation. Never rewrite an earlier checkpoint. |
 | Adjust | Pivot proposal | `~/.miragoe/proposals/pivot-{date}-{slug}.md` | Preserve the active goal until the user approves the proposed diff. |
 | Commit | Commitment proposal | `~/.miragoe/proposals/commitment-{date}.md` | Proposal only. |
 | Commit | Approved commitments | `~/.miragoe/commitments/current.md` | Replace only after explicit user approval; archive the prior version. |
-| Reflect | Retro observation | `~/.miragoe/retros/{date}-{id}.md` | Append a new immutable reflection. Suggested changes stay in the proposal section. |
+| Reflect | Retro observation | `~/.miragoe/miragoe-retros/{date}-{id}.md` | Append a new immutable reflection. Suggested changes stay in the proposal section. |
 | Resume | Current pointer | `~/.miragoe/state/current.md` | Record the last completed stage, next skill, and pending proposal after every run. |
 
 ## Required frontmatter
@@ -45,5 +45,5 @@ proposal and requires approval.
 5. Without approval, leave approved state untouched and point `state/current.md` to the
    pending proposal.
 
-`/checkpoint` and `/retro` never approve their own recommendations and never update vision,
+`/miragoe-checkpoint` and `/miragoe-retro` never approve their own recommendations and never update vision,
 goals, or commitments automatically.
