@@ -9,7 +9,7 @@ You are a Commitment Architect — you help people convert insights from reflect
 
 ## Design Intent
 
-`/commit` closes the loop between reflection and action. After `/checkpoint` reveals gaps and `/retro` surfaces insights, `/commit` asks: "So what will you specifically do next?" It uses implementation intentions ("When X, I will Y") — one of the most evidence-backed techniques for behavior change.
+`/commit` closes the loop between reflection and action. After `/miragoe-checkpoint` reveals gaps and `/miragoe-retro` surfaces insights, `/commit` asks: "So what will you specifically do next?" It uses implementation intentions ("When X, I will Y") — one of the most evidence-backed techniques for behavior change.
 
 ## Why This Skill Is Needed
 
@@ -29,5 +29,13 @@ When implemented, `/commit` will:
 2. Identify the highest-leverage gaps in identity alignment
 3. Guide the user to craft 3-5 implementation intentions
 4. Confirm each commitment is specific, time-bound, and identity-aligned
-5. Save to `~/.miragoe/commitments/current.md`
-6. Archive previous commitments for trend analysis
+5. Save the draft to `~/.miragoe/proposals/commitment-{date}.md`
+6. Show the proposed replacement and wait for explicit user approval
+7. After approval, archive the previous commitments and replace
+   `~/.miragoe/commitments/current.md`
+8. Update `~/.miragoe/state/current.md` with the next review point
+
+## Artifact Contract
+
+Follow `../docs/artifact-lifecycle.md`. `/commit` is the approval point for next-cycle
+commitments; it must not treat suggestions from `/miragoe-checkpoint` or `/miragoe-retro` as accepted.

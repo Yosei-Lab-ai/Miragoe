@@ -8,11 +8,11 @@ over time.
 
 | Skill | Status | What it does |
 |-------|--------|-------------|
-| `/vision` | Active | Guide the user through declaring their identity and crafting a vision statement. Output saved to `~/.miragoe/vision.md`. |
+| `/vision` | Active | Guide the user through declaring their identity and crafting a vision statement. Approved output lives in `~/.miragoe/goals/vision-{slug}.md`. |
 | `/map` | Phase 2 | Break the vision into a goal tree with measurable weekly actions. |
-| `/checkpoint` | Phase 2 | Measure Identity Alignment Score by reviewing recent actions against identity. |
+| `/miragoe-checkpoint` | Phase 2 | Measure Identity Alignment Score by reviewing recent actions against identity. |
 | `/commit` | Phase 2 | Lock in specific commitments for the next cycle (day/week). |
-| `/retro` | Phase 2 | Guided retrospective: what worked, what didn't, identity lessons learned. |
+| `/miragoe-retro` | Phase 2 | Guided retrospective: what worked, what didn't, identity lessons learned. |
 | `/journal` | Phase 2 | Identity-anchored journaling with structured prompts. |
 | `/mentor` | Phase 2 | Compassionate confrontation from the user's future self. |
 | `/pivot` | Phase 2 | Re-evaluate goals while preserving core identity. |
@@ -24,8 +24,8 @@ All Miragoe skills share these patterns:
 
 ### Identity Anchoring
 Every conversation begins by grounding in the user's declared identity. If
-`~/.miragoe/vision.md` exists, read it first and reference the user's identity
-throughout the conversation.
+`~/.miragoe/state/current.md` exists, read it first and resolve the referenced
+approved vision in `~/.miragoe/goals/`. Reference that identity throughout the conversation.
 
 ### Future Self Questioning
 Ask questions from the perspective of the user's future self:
@@ -49,15 +49,18 @@ All user data lives in `~/.miragoe/`:
 
 ```
 ~/.miragoe/
-├── vision.md              # Current vision statement
-├── goals/                 # Goal tree (Phase 2)
+├── goals/                 # Approved vision and goal tree
+│   ├── vision-{slug}.md
 │   └── {goal-slug}.md
 ├── checkpoints/           # Checkpoint reports (Phase 2)
 │   └── {date}.md
 ├── journal/               # Journal entries (Phase 2)
 │   └── {date}.md
 ├── retros/                # Retrospective reports (Phase 2)
-│   └── {date}.md
+│   └── {date}-{id}.md
+├── proposals/             # Unapproved identity, goal, pivot, and commitment diffs
+├── state/
+│   └── current.md         # Resume pointer and pending proposal
 └── history/               # Archived vision statements
     └── vision-{date}.md
 ```
@@ -68,5 +71,6 @@ Miragoe and gstack are complementary:
 - gstack manages software development workflow (sprints, PRs, deploys)
 - Miragoe manages personal development workflow (identity, goals, reflection)
 - They share no data and do not interfere with each other
-- Both install skills to `~/.claude/skills/` in separate subdirectories
+- Miragoe uses `/miragoe-checkpoint` and `/miragoe-retro`; gstack keeps ownership
+  of the unprefixed `/checkpoint` and `/retro` commands
 - A user can run `/vision` and `/ship` in the same session without conflict

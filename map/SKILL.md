@@ -17,7 +17,7 @@ The skill works by decomposing identity into domains (health, career, relationsh
 
 Most people fail not because they lack vision, but because they lack a map from vision to Tuesday afternoon. `/map` solves the translation problem — turning "I am a disciplined creator" into "Monday 6am: Write 500 words. Wednesday 7pm: Review and edit. Friday: Publish one piece."
 
-The goal tree structure also enables `/checkpoint` to measure alignment precisely: did you do the specific actions that your identity demands?
+The goal tree structure also enables `/miragoe-checkpoint` to measure alignment precisely: did you do the specific actions that your identity demands?
 
 ## Key Design Decisions
 
@@ -29,8 +29,17 @@ The goal tree structure also enables `/checkpoint` to measure alignment precisel
 ## Phase 2 Implementation Notes
 
 When implemented, `/map` will:
-1. Read `~/.miragoe/vision.md` to anchor in the user's identity
+1. Read `~/.miragoe/state/current.md` and the approved vision in `~/.miragoe/goals/`
+   to anchor in the user's identity
 2. Walk through each life domain and ask what goals serve the identity
 3. For each goal, define success criteria, pivot criteria, and weekly actions
-4. Save each goal as a separate file in `~/.miragoe/goals/`
-5. Generate a weekly action summary in `~/.miragoe/goals/weekly-overview.md`
+4. Save each draft as `~/.miragoe/proposals/goal-{slug}.md`
+5. Show the proposed diff and activate `~/.miragoe/goals/{slug}.md` only after
+   explicit user approval
+6. Generate a weekly action summary and update `~/.miragoe/state/current.md`
+
+## Artifact Contract
+
+Follow `../docs/artifact-lifecycle.md`. `/map` may propose goals, success criteria,
+pivot criteria, and weekly actions. It must not activate or replace them without the
+user approving the displayed proposal.

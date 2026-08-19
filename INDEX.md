@@ -24,6 +24,8 @@
 | `unblock/` | 行き詰まり解消 |
 | `pivot/` | 方針転換の判断 |
 | `retro/` | 振り返り(retrospective) |
+| `miragoe-checkpoint/` | gstackと衝突しない公開コマンド `/miragoe-checkpoint` |
+| `miragoe-retro/` | gstackと衝突しない公開コマンド `/miragoe-retro` |
 | `templates/` | スキル共通テンプレート |
 | `docs/` | スキルパック設計・仕様 |
 | `scripts/` | 補助スクリプト + `pre-commit/`(構造ガード4種) |

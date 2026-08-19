@@ -29,5 +29,13 @@ When implemented, `/pivot` will:
 2. Review checkpoint data for the goal in question
 3. Guide the user through a structured pivot evaluation
 4. If pivoting: help define a new goal that better serves the identity
-5. Update `~/.miragoe/goals/` — archive the old goal, create the new one
-6. Flag in the next `/retro` for reflection
+5. Write the proposed change to `~/.miragoe/proposals/pivot-{date}-{slug}.md`
+6. Show the old/new diff and wait for explicit user approval
+7. After approval, archive the old goal, activate the replacement, and update
+   `~/.miragoe/state/current.md`
+8. Flag the decision in the next `/miragoe-retro` for reflection
+
+## Artifact Contract
+
+Follow `../docs/artifact-lifecycle.md`. Until approval, the current goal remains active.
+Silence, continuing the conversation, or running another skill does not count as approval.

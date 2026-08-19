@@ -2,6 +2,11 @@
 created: {{date}}
 updated: {{date}}
 version: 1
+status: {{proposed | approved | archived}}
+source_skill: vision
+resume_from: {{next skill or concrete next question}}
+approval_required: {{true | false}}
+approved_at: {{timestamp or null}}
 ---
 
 # Identity Declaration

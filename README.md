@@ -19,8 +19,7 @@ Miragoe encodes this insight into a repeatable pipeline:
 ```
 Identity → Map → Act → Check → Adjust → Commit → Reflect
    │         │      │      │        │        │        │
- /vision   /map  (daily) /check  /pivot   /commit  /retro
-                  point
+ /vision   /map  (daily) /miragoe-checkpoint  /pivot  /commit  /miragoe-retro
 ```
 
 ## Quick Start
@@ -34,7 +33,7 @@ cd Miragoe && bash setup
 /vision
 
 # 3. Check your alignment (daily or weekly)
-/checkpoint
+/miragoe-checkpoint
 ```
 
 ## Skills
@@ -43,9 +42,9 @@ cd Miragoe && bash setup
 |-------|-------|-------------|
 | `/vision` | 1 | Declare your identity and craft a vision statement |
 | `/map` | 2 | Break your vision into a goal tree with weekly actions |
-| `/checkpoint` | 2 | Measure your Identity Alignment Score |
+| `/miragoe-checkpoint` | 2 | Measure your Identity Alignment Score without replacing gstack's `/checkpoint` |
 | `/commit` | 2 | Lock in commitments for the next cycle |
-| `/retro` | 2 | Reflect on what worked, what didn't, and why |
+| `/miragoe-retro` | 2 | Reflect without replacing gstack's `/retro` |
 | `/journal` | 2 | Guided journaling with identity-anchored prompts |
 | `/mentor` | 2 | Get compassionate confrontation from your future self |
 | `/pivot` | 2 | Re-evaluate goals without abandoning identity |
@@ -58,8 +57,8 @@ cd Miragoe && bash setup
 │                    MIRAGOE PIPELINE                    │
 │                                                         │
 │  ┌──────────┐   ┌──────┐   ┌─────┐   ┌───────────┐    │
-│  │ /vision  │──▶│ /map │──▶│ Act │──▶│/checkpoint│    │
-│  │ Identity │   │ Plan │   │Daily│   │  Measure  │    │
+│  │ /vision  │──▶│ /map │──▶│ Act │──▶│ /miragoe- │    │
+│  │ Identity │   │ Plan │   │Daily│   │checkpoint │    │
 │  └──────────┘   └──────┘   └─────┘   └─────┬─────┘    │
 │       ▲                                      │          │
 │       │         ┌────────┐   ┌──────┐        │          │
@@ -67,8 +66,8 @@ cd Miragoe && bash setup
 │       │    │    └────────┘   └──────┘                   │
 │       │    ▼                                            │
 │  ┌────┴─────┐   ┌────────┐                             │
-│  │ /commit  │──▶│ /retro │                              │
-│  │ Lock in  │   │Reflect │                              │
+│  │ /commit  │──▶│/miragoe-│                              │
+│  │ Lock in  │   │ retro   │                              │
 │  └──────────┘   └────────┘                             │
 │                                                         │
 │  Support skills: /journal  /mentor  /unblock            │
@@ -106,6 +105,18 @@ They complement each other. Use gstack for your craft. Use Miragoe for yourself.
 
 All data is stored locally in `~/.miragoe/`. Nothing is sent to any cloud
 service. Your identity work stays on your machine.
+
+The installer exposes `/miragoe-checkpoint` and `/miragoe-retro` under prefixed
+names because gstack already owns `/checkpoint` and `/retro`. If legacy
+`~/.lifestack/` data exists on first install, it is copied into `~/.miragoe/`
+without deleting the legacy directory.
+
+## Artifact safety
+
+Miragoe keeps proposed changes separate from approved identity, goals, and
+commitments. `~/.miragoe/state/current.md` records where to resume; checkpoint and
+retro observations never rewrite approved state. See
+[`docs/artifact-lifecycle.md`](docs/artifact-lifecycle.md).
 
 ## 💖 Support
 

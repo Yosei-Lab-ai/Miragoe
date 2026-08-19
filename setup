@@ -1,49 +1,116 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Lifestack installer
-# Creates symlinks for Claude Code skills and initializes user data directory.
+MIRAGOE_DIR="$(cd "$(dirname "$0")" && pwd)"
+SKILLS_ROOT="${HOME}/.claude/skills"
+DATA_DIR="${HOME}/.miragoe"
+LEGACY_DATA_DIR="${HOME}/.lifestack"
+SKILLS=(vision map commit journal mentor pivot unblock miragoe-checkpoint miragoe-retro)
 
-LIFESTACK_DIR="$(cd "$(dirname "$0")" && pwd)"
-SKILLS_DIR="$HOME/.claude/skills/lifestack"
-DATA_DIR="$HOME/.lifestack"
-
-echo "=== Lifestack Setup ==="
-echo ""
-
-# 1. Install skills to ~/.claude/skills/lifestack/
-if [ -L "$SKILLS_DIR" ] && [ "$(readlink "$SKILLS_DIR")" = "$LIFESTACK_DIR" ]; then
-    echo "[skip] Skills already linked at $SKILLS_DIR"
-else
-    mkdir -p "$(dirname "$SKILLS_DIR")"
-    # Remove existing (broken symlink or directory) if present
-    if [ -e "$SKILLS_DIR" ] || [ -L "$SKILLS_DIR" ]; then
-        echo "[update] Removing existing $SKILLS_DIR"
-        rm -rf "$SKILLS_DIR"
+is_expected_link() {
+    local source="$1" target="$2" actual expected
+    if [ -L "$target" ] && [ "$(readlink "$target")" = "$source" ]; then
+        return 0
     fi
-    ln -s "$LIFESTACK_DIR" "$SKILLS_DIR"
-    echo "[done] Linked skills: $SKILLS_DIR -> $LIFESTACK_DIR"
+    case "$(uname -s)" in
+        MINGW*|MSYS*|CYGWIN*)
+            command -v powershell.exe >/dev/null 2>&1 || return 1
+            command -v cygpath >/dev/null 2>&1 || return 1
+            [ -d "$target" ] || return 1
+            actual="$(powershell.exe -NoProfile -Command "(Get-Item -LiteralPath '$(cygpath -w "$target")').Target" 2>/dev/null | tr -d '\r')"
+            expected="$(cygpath -w "$source")"
+            [ "${actual,,}" = "${expected,,}" ]
+            ;;
+        *) return 1 ;;
+    esac
+}
+
+link_skill() {
+    local skill="$1"
+    local source="${MIRAGOE_DIR}/${skill}"
+    local target="${SKILLS_ROOT}/${skill}"
+
+    if is_expected_link "$source" "$target"; then
+        echo "[skip] /${skill} already linked"
+        return
+    fi
+    if [ -e "$target" ] || [ -L "$target" ]; then
+        echo "[FAIL] ${target} already exists and is not the expected Miragoe link." >&2
+        echo "       Move it aside explicitly, then rerun setup." >&2
+        exit 2
+    fi
+
+    case "$(uname -s)" in
+        MINGW*|MSYS*|CYGWIN*)
+            if ! command -v cmd.exe >/dev/null 2>&1 || ! command -v cygpath >/dev/null 2>&1; then
+                echo "[FAIL] Windows junction setup requires cmd.exe and cygpath." >&2
+                exit 2
+            fi
+            cmd.exe /c mklink /J "$(cygpath -w "$target")" "$(cygpath -w "$source")" >/dev/null
+            ;;
+        *) ln -s "$source" "$target" ;;
+    esac
+    echo "[done] /${skill}: ${target} -> ${source}"
+}
+
+echo "=== Miragoe Setup ==="
+mkdir -p "$SKILLS_ROOT"
+for skill in "${SKILLS[@]}"; do
+    link_skill "$skill"
+done
+
+MIGRATED_VISION_PATH=""
+if [ -d "$LEGACY_DATA_DIR" ] && [ ! -e "$DATA_DIR" ]; then
+    cp -a "$LEGACY_DATA_DIR" "$DATA_DIR"
+    echo "[migrate] Copied legacy data to ${DATA_DIR}; preserved ${LEGACY_DATA_DIR} as backup."
+elif [ -d "$LEGACY_DATA_DIR" ] && [ -e "$DATA_DIR" ]; then
+    echo "[notice] Both ${LEGACY_DATA_DIR} and ${DATA_DIR} exist; no automatic merge was attempted."
 fi
 
-# 2. Initialize ~/.lifestack/ data directory
-if [ -d "$DATA_DIR" ]; then
-    echo "[skip] Data directory already exists at $DATA_DIR"
-else
-    mkdir -p "$DATA_DIR"/{goals,checkpoints,journal,retros,commitments,history}
-    echo "[done] Created data directory: $DATA_DIR"
+mkdir -p "$DATA_DIR"/{goals,checkpoints,journal,retros,commitments,history,proposals,state}
+if [ -f "$DATA_DIR/vision.md" ] && ! compgen -G "$DATA_DIR/goals/vision-*.md" >/dev/null; then
+    MIGRATED_VISION_PATH="goals/vision-legacy.md"
+    cp -p "$DATA_DIR/vision.md" "$DATA_DIR/$MIGRATED_VISION_PATH"
+    echo "[migrate] Preserved the approved legacy vision at ${DATA_DIR}/${MIGRATED_VISION_PATH}."
 fi
 
-# 3. Ensure setup script is executable
-chmod +x "$LIFESTACK_DIR/setup"
+if [ ! -e "$DATA_DIR/state/current.md" ]; then
+    if [ -n "$MIGRATED_VISION_PATH" ]; then
+        printf '%s\n' \
+            '---' \
+            'status: ready' \
+            'last_completed: legacy-data-migration' \
+            'next_skill: map' \
+            "approved_vision: ${MIGRATED_VISION_PATH}" \
+            'pending_proposal: null' \
+            'approval_required: false' \
+            '---' \
+            '' \
+            '# Resume' \
+            '' \
+            'Your existing approved vision was preserved. Continue with `/map`.' \
+            > "$DATA_DIR/state/current.md"
+    else
+        printf '%s\n' \
+            '---' \
+            'status: ready' \
+            'last_completed: setup' \
+            'next_skill: vision' \
+            'pending_proposal: null' \
+            'approval_required: false' \
+            '---' \
+            '' \
+            '# Resume' \
+            '' \
+            'Run `/vision`. Proposed identity, goal, pivot, and commitment changes require explicit user approval before activation.' \
+            > "$DATA_DIR/state/current.md"
+    fi
+fi
 
 echo ""
-echo "=== Lifestack installed ==="
-echo ""
-echo "Your data lives in: $DATA_DIR"
-echo "Skills linked from: $SKILLS_DIR"
-echo ""
-echo "Get started:"
-echo "  1. Open Claude Code"
-echo "  2. Run /vision to declare your identity"
-echo "  3. Run /checkpoint to measure your alignment"
-echo ""
+echo "=== Miragoe installed ==="
+echo "Data root: ${DATA_DIR}"
+echo "Resume pointer: ${DATA_DIR}/state/current.md"
+echo "gstack-safe aliases: /miragoe-checkpoint and /miragoe-retro"
+echo "Approval boundary: proposals never replace approved identity, goals, or commitments without explicit user approval."
+echo "Start with /vision."

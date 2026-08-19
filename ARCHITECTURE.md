@@ -8,7 +8,8 @@ agile sprint cycles, adapted for personal identity work:
 ```
 ┌─────────┐     ┌─────┐     ┌─────┐     ┌───────────┐
 │ DECLARE │────▶│ MAP │────▶│ ACT │────▶│   CHECK   │
-│ /vision │     │/map │     │daily│     │/checkpoint│
+│ /vision │     │/map │     │daily│     │ /miragoe- │
+│         │     │     │     │     │     │checkpoint │
 └─────────┘     └─────┘     └─────┘     └─────┬─────┘
      ▲                                         │
      │ identity                          alignment
@@ -16,7 +17,8 @@ agile sprint cycles, adapted for personal identity work:
      │                                         │
 ┌────┴─────┐    ┌───────┐    ┌────────┐        │
 │ REFLECT  │◀───│COMMIT │◀───│ ADJUST │◀───────┘
-│  /retro  │    │/commit│    │ /pivot │
+│/miragoe- │    │/commit│    │ /pivot │
+│  retro   │    │       │    │        │
 └──────────┘    └───────┘    └────────┘
 ```
 
@@ -32,7 +34,7 @@ Each goal includes success criteria, pivot criteria, and a target date.
 The user lives their life, taking actions aligned with their identity.
 Miragoe does not interrupt daily life — it provides structure for reflection.
 
-### Phase 4: Check (`/checkpoint`)
+### Phase 4: Check (`/miragoe-checkpoint`)
 Measure Identity Alignment Score. The user reports what they did, and the system
 scores alignment against declared identity and planned actions.
 
@@ -44,7 +46,7 @@ keep the identity.
 Lock in specific commitments for the next cycle. Implementation intentions:
 "When [trigger], I will [action]."
 
-### Phase 7: Reflect (`/retro`)
+### Phase 7: Reflect (`/miragoe-retro`)
 End-of-cycle retrospective. What worked? What didn't? What did I learn about
 who I am?
 
@@ -55,7 +57,7 @@ who I am?
 
 ## Data Model
 
-### Vision Statement (`~/.miragoe/vision.md`)
+### Approved Vision Statement (`~/.miragoe/goals/vision-{slug}.md`)
 
 ```markdown
 ---
@@ -186,9 +188,8 @@ identity_reflection: [one sentence]
 
 ```
 ~/.miragoe/
-├── vision.md                  # Current active vision statement
-├── goals/                     # Goal tree (one file per goal)
-│   ├── morning-movement.md
+├── goals/                     # Approved vision and active goals
+│   ├── vision-disciplined-creator.md
 │   └── deep-work-blocks.md
 ├── checkpoints/               # Weekly/daily checkpoint reports
 │   ├── 2026-03-17.md
@@ -199,9 +200,16 @@ identity_reflection: [one sentence]
 │   └── 2026-03-24.md
 ├── commitments/               # Active commitments
 │   └── current.md
+├── proposals/                 # `~/.miragoe/proposals/`: unapproved diffs
+├── state/
+│   └── current.md             # Resume pointer: last stage, next step, pending proposal
 └── history/                   # Archived vision statements
     └── vision-2026-03-24.md
 ```
+
+See `docs/artifact-lifecycle.md` for the proposal/approval rules. Checkpoint and
+retro files are append-only observations. They may recommend a change, but only an
+explicitly approved proposal can replace identity, goals, or commitments.
 
 ## Obsidian Integration
 
@@ -226,7 +234,8 @@ No plugins are required for basic functionality. Recommended plugins:
 
 Every skill begins with:
 
-1. Check if `~/.miragoe/vision.md` exists
+1. Read `~/.miragoe/state/current.md`, then resolve the referenced approved vision
+   in `~/.miragoe/goals/`
 2. If yes: Read it, extract the Identity Declaration, greet the user with
    reference to their identity
 3. If no: Suggest running `/vision` first (except `/vision` itself)

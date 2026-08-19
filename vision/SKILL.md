@@ -26,7 +26,8 @@ By the end of this session, the user will have:
 1. A declared identity: **"I am [identity]"** — not "I want to be" or "I'm working toward"
 2. Five concrete Identity Actions that prove this identity daily
 3. A target date framed as: **"I have already achieved this by [date]. I am now tracing the route."**
-4. A Vision Statement saved to `~/.miragoe/goals/vision-{id}.md`
+4. A proposed Vision Statement saved to `~/.miragoe/proposals/vision-{id}.md`, then
+   activated at `~/.miragoe/goals/vision-{id}.md` only after explicit user approval
 
 The cognitive reframe is critical. The user leaves this session not with a goal to pursue,
 but with an identity to live. The difference is everything.
@@ -37,7 +38,7 @@ but with an identity to live. The difference is everything.
 
 ```bash
 # 1. Ensure data directories exist
-mkdir -p ~/.miragoe/goals ~/.miragoe/history
+mkdir -p ~/.miragoe/{goals,history,proposals,state}
 
 # 2. Check for existing vision statements
 ls ~/.miragoe/goals/vision-*.md 2>/dev/null
@@ -45,8 +46,8 @@ ls ~/.miragoe/goals/vision-*.md 2>/dev/null
 
 - If existing vision files are found, read them and ask:
   "You have an existing vision. Would you like to **evolve** it, **add** a new vision alongside it, or **start fresh**?"
-- If starting fresh, archive existing files:
-  `mv ~/.miragoe/goals/vision-*.md ~/.miragoe/history/`
+- If starting fresh, prepare an archive-and-replace diff. Do not move or overwrite an
+  approved vision until the user explicitly approves that diff.
 - If no existing visions, proceed directly.
 
 ---
@@ -367,11 +368,16 @@ to walk the path."
 ### File Naming
 
 Generate a short slug ID from the identity declaration (e.g., "free-developer",
-"disciplined-creator", "confident-athlete"). Save to:
+"disciplined-creator", "confident-athlete"). Draft to:
 
 ```
-~/.miragoe/goals/vision-{slug}.md
+~/.miragoe/proposals/vision-{slug}.md
 ```
+
+Follow `../docs/artifact-lifecycle.md`. Show the complete proposal, destination path,
+and material diff. Only after explicit approval may the proposal become
+`~/.miragoe/goals/vision-{slug}.md`. Record the next step in
+`~/.miragoe/state/current.md` whether approval is granted or pending.
 
 ### File Format
 
@@ -399,7 +405,8 @@ Show the complete Vision Statement and ask:
 > Does every line feel like *you*? If anything feels performative or forced, tell me
 > and we'll fix it."
 
-Make adjustments as needed. Save the final version.
+Make adjustments as needed. Save the proposal first. Activate it only after the user
+explicitly approves the exact version shown.
 
 ### Closing
 
@@ -410,7 +417,7 @@ End with:
 > Your first move: [wedge from Step 5]. Do it today.
 >
 > When you're ready to break this into weekly actions, run `/map`.
-> When you want to check your alignment, run `/checkpoint`."
+> When you want to check your alignment, run `/miragoe-checkpoint`."
 
 Do NOT add motivational fluff. Do NOT say "You've got this!" or "I believe in you!"
 The declaration speaks for itself. End clean.
